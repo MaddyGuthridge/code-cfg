@@ -32,3 +32,5 @@ as picking which options get applied.
       before they are applied.
 * [ ] Provide a "settings snippet editor" which allows users to create snippet
       sets more easily.
+* [ ] Allow for "settings subscriptions" where you can subscribe to a setting,
+      meaning it can be easily updated with a single command.
