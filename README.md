@@ -24,6 +24,7 @@ as picking which options get applied.
 ## Planned features
 
 * [ ] Download JSONC settings snippets and apply them using a simple CLI
+* [ ] Be able to un-apply settings by using a special syntax in the keys
 * [ ] Live-preview settings before saving them (writes settings, but undoes
       changes when the application quits, using a backup copy).
 * [ ] Provide a settings "snippet set" file format which allows users to apply
