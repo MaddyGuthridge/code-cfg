@@ -1,3 +1,4 @@
+//! Main entrypoint for code-cfg program
 mod snippet;
 
 use std::{env, path::PathBuf};
