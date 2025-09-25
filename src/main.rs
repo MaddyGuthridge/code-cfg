@@ -4,11 +4,14 @@
 //! A configuration tool to share VS Code settings more easily.
 //!
 //! This is main.rs, the main entrypoint to the program.
-mod snippet;
+mod loader;
+mod apply;
 
-use std::{env, path::PathBuf};
+use std::{env, fs, path::PathBuf};
 
 use clap::Parser;
+
+use crate::{apply::apply, loader::load_snippet};
 
 /// Returns the path to the user settings JSON file
 ///
@@ -57,5 +60,22 @@ struct Args {
 fn main() {
     let cli = Args::parse();
 
-    println!("{cli:?}");
+    // Holy moly I love Rust's type system so much!
+    let snippets = cli.snippets
+        .iter()
+        .map(|snip| load_snippet(snip))
+        .collect::<Result<Vec<String>, _>>()
+        .unwrap();
+
+        // Load user's base settings
+    let base_settings = String::try_from(fs::read(code_settings_file()).unwrap()).unwrap();
+
+    // Now apply all snippets
+    let new_settings = snippets
+        .into_iter()
+        .fold(base_settings, |settings, snip| apply(&settings, &snip).unwrap());
+
+    println!("{new_settings}");
+
+
 }
