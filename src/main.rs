@@ -1,4 +1,9 @@
-//! Main entrypoint for code-cfg program
+//! code-cfg
+//! ========
+//!
+//! A configuration tool to share VS Code settings more easily.
+//!
+//! This is main.rs, the main entrypoint to the program.
 mod snippet;
 
 use std::{env, path::PathBuf};
