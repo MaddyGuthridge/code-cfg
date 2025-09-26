@@ -7,11 +7,17 @@ use std::fs;
 use reqwest::Url;
 
 /// Fetch the given snippet from the web.
+///
+/// This performs a synchronous web request. In order to prevent overly long
+/// blocking, each of these requests should be performed in a different thread.
 fn fetch_web_snippet(url: Url) -> Result<String, String> {
     todo!()
 }
 
 /// Load the given snippet from a file
+///
+/// This performs a blocking file system operation. To maximise performance,
+/// each operation should be run in a different thread.
 fn load_file_snippet(path: &str) -> Result<String, String> {
     let bytes = fs::read(path)
         .or(Err("Unable to read file".to_owned()))
