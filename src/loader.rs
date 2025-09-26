@@ -7,11 +7,15 @@ use std::fs;
 use reqwest::Url;
 
 /// Fetch the given snippet from the web.
+///
+/// This uses the `reqwest` library to send a blocking synchronous web request.
 fn fetch_web_snippet(url: Url) -> Result<String, String> {
     todo!()
 }
 
 /// Load the given snippet from a file
+///
+/// This loads the file, and ensures that is a valid text encoding.
 fn load_file_snippet(path: &str) -> Result<String, String> {
     let bytes = fs::read(path)
         .or(Err("Unable to read file".to_owned()))
