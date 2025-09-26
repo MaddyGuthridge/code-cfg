@@ -16,6 +16,7 @@ fn fetch_web_snippet(url: Url) -> Result<String, String> {
 
 /// Load the given snippet from a file
 ///
+/// This loads the file, and ensures that is a valid text encoding.
 /// This performs a blocking file system operation. To maximise performance,
 /// each operation should be run in a different thread.
 fn load_file_snippet(path: &str) -> Result<String, String> {
